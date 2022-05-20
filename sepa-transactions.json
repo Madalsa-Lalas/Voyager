@@ -1,0 +1,1046 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Sepa Transactions",
+    "version": "2.0",
+    "title": "Sepa Transactions"
+  },
+  "host": "gateway-sb.clearent.net",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "SEPA Transactions",
+      "description": "Transaction Controller"
+    },
+    {
+      "name": "SEPA Merchants Processing",
+      "description": "Merchants Controller"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "application/xml"
+  ],
+  "produces": [
+    "application/json",
+    "application/xml"
+  ],
+  "paths": {
+    "/rest/v2/direct-debit/merchants": {
+      "get": {
+        "tags": [
+          "SEPA Merchants Processing"
+        ],
+        "summary": "Get All Merchants",
+        "operationId": "getAllMerchantsByProviderUsingGET",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "transactionsStatus",
+            "in": "query",
+            "description": "The transactions status for the merchants to lookup",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number that search results start on",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of elements returned on eSEPA page",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "isDescending",
+            "in": "query",
+            "description": "Set to true to get results returned in descending order",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "Field results are ordered by",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "apiKeyValue",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "transactionStatus",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Settling",
+              "Settled",
+              "Returned",
+              "Writing",
+              "Declined",
+              "Not_Confirmed",
+              "Sent",
+              "Rejected",
+              "Funded",
+              "Partially_Funded",
+              "Completed"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MerchantResponsePayload"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/v2/direct-debit/transactions": {
+      "get": {
+        "tags": [
+          "SEPA Transactions"
+        ],
+        "summary": "Search for Sepa Transactions",
+        "description": "The search API will return paginated results. Default page-size (results per page) is 25. Dates are stored in UTC - any date related searches should account for this. HATEOAS links will be returned to the response, allowing you to page to the next set of results or the previous.",
+        "operationId": "handleSearchUsingGET",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "api-key-value",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Unique id of the Sepa transaction",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Type. Allowed values: Debit,Credit",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Debit",
+              "Credit"
+            ]
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "description": "Amount of the transaction",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "invoice",
+            "in": "query",
+            "description": "Invoice number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "date-filter",
+            "in": "query",
+            "description": "Predefined date ranges that can be searched on (Dates are stored in UTC). Allowed values: last_24_hours, yesterday, last_week, last_month, last_180_days, custom_range",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "last_24_hours",
+              "yesterday",
+              "last_week",
+              "last_month",
+              "last_180_days",
+              "custom_range"
+            ]
+          },
+          {
+            "name": "status-change-start-date",
+            "in": "query",
+            "description": "Filters the transactions list by the created date/time (Dates are stored in UTC). Setting start date will return transactions that were processed after this date/time. Setting both start and end date creates a range",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status-change-end-date",
+            "in": "query",
+            "description": "Use with start date to create range (Dates are stored in UTC)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "date-format",
+            "in": "query",
+            "description": "Date format being used for start or end date (Dates are stored in UTC). Allowed values: MM-dd-yyyy hh:mm a, MM-dd-yy HH:mm, MM-dd-yy HH:mm z, yyyy-MM-dd HH:mm, yyyy-MM-dd HH:mm z ",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "MM-dd-yyyy hh:mm a",
+              "MM-dd-yy HH:mm",
+              "MM-dd-yy HH:mm z",
+              "yyyy-MM-dd HH:mm",
+              "yyyy-MM-dd HH:mm z"
+            ]
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Page Size",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "descending",
+            "in": "query",
+            "description": "List results in descending order, default is true",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          {
+            "name": "order-by",
+            "in": "query",
+            "description": "Provide the name of one of the allowed search fields and the results will be ordered by this field. Use in combination with descending field.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "description": "Description",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status of transaction. Allowed values: Pending, Settling, Settled, Returned, Writing, Declined, Not_Confirmed, Sent, Rejected, Funded, Partially_Funded, Completed",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Settling",
+              "Settled",
+              "Returned",
+              "Writing",
+              "Declined",
+              "Not_Confirmed",
+              "Sent",
+              "Rejected",
+              "Funded",
+              "Partially_Funded",
+              "Completed"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/sepa-transaction"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/v2/direct-debit/transactions/credit": {
+      "post": {
+        "tags": [
+          "SEPA Transactions"
+        ],
+        "summary": "Post a Credit Transaction",
+        "description": "An SEPA credit transaction takes money out of the merchant's account and puts it into your customer's account. \n\nThe \"check-field\" keypair can check for a duplicate transaction attempt. The “check-field” points to another field you provide within the request. The field you select needs to have a value.  \n\nFields supported: invoice, order-id, purchase-order, check-number.  \n\nExample: \"check-field\": \"invoice\", \"invoice\": \"invoice1\" \n\nA customer's bank account can be validated using the field \"validate-account\". If the validation fails, an appropriate error message is returned.  \n\nExample: \"validate-account\": \"true\".",
+        "operationId": "handleCreditTransactionUsingPOST",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "sepa-transaction",
+            "description": "Model of an sepa-transaction request",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/SepaCreditTransactionRequest"
+            }
+          },
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "apiKeyValue",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/sepa-transaction"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/v2/direct-debit/transactions/debit": {
+      "post": {
+        "tags": [
+          "SEPA Transactions"
+        ],
+        "summary": "Post a Debit Transaction",
+        "description": "An SEPA debit transaction takes money out of the customer’s account and puts it into your merchant's account. \n\nThe \"check-field\" keypair can check for a duplicate transaction attempt. The “check-field” points to another field you provide within the request. The field you select needs to have a value.  \n\nFields supported: invoice, order-id, purchase-order, check-number.  \n\nExample: \"check-field\": \"invoice\", \"invoice\": \"invoice1\" \n\nA customer's bank account can be validated using the field \"validate-account\". If the validation fails, an appropriate error message is returned.  \n\nExample: \"validate-account\": \"true\".",
+        "operationId": "handleDebitTransactionUsingPOST",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "sepa-transaction",
+            "description": "Model of an sepa-transaction request",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/SepaDebitTransactionRequest"
+            }
+          },
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "apiKeyValue",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/sepa-transaction"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/v2/direct-debit/transactions/{transactionKey}": {
+      "get": {
+        "tags": [
+          "SEPA Transactions"
+        ],
+        "summary": "Get Transaction",
+        "operationId": "handleGetUsingGET",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "transactionKey",
+            "in": "path",
+            "description": "Use the id returned in response of original POST",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "apiKeyValue",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/sepa-transaction"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SEPA Transactions"
+        ],
+        "summary": "Cancel transaction",
+        "description": "Customer can cancel a transaction sent to Voyager. Until the transaction is in the internal status PENDING it can be canceled by customer so it wont be sent to the bank for processing.",
+        "operationId": "handleVoidUsingDELETE",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "transactionKey",
+            "in": "path",
+            "description": "transactionKey",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "apiKeyValue",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Response"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SEPA Token Response": {
+      "type": "object",
+      "properties": {
+        "account-number": {
+          "type": "string",
+          "example": "1111",
+          "description": "Last four of SEPA account number."
+        },
+        "account-type": {
+          "type": "string",
+          "example": "Checking",
+          "enum": [
+            "Checking",
+            "Savings"
+          ]
+        },
+        "created": {
+          "type": "string",
+          "example": "1100000000000000",
+          "description": "Date/time when the token was created."
+        },
+        "customer-key": {
+          "type": "string",
+          "example": "customer123",
+          "description": "customer associated with token"
+        },
+        "default": {
+          "type": "boolean",
+          "example": false,
+          "description": "true if the card should be the default card number"
+        },
+        "individual-name": {
+          "type": "string",
+          "example": "John Doe",
+          "description": "The name of the account holder."
+        },
+        "last-used": {
+          "type": "string",
+          "example": "1100000000000000",
+          "description": "Date/time when the token was last used."
+        },
+        "merchant-id": {
+          "type": "string",
+          "example": "000008888",
+          "description": "Merchant ID"
+        },
+        "routing-number": {
+          "type": "string",
+          "example": "081009813",
+          "description": "Bank routing number"
+        },
+        "times-used": {
+          "type": "integer",
+          "format": "int32",
+          "example": 14,
+          "description": "Number of times the token has been used in an SEPA transaction."
+        },
+        "token-description": {
+          "type": "string",
+          "example": "Travel checking account",
+          "description": "A brief description of the token"
+        },
+        "token-id": {
+          "type": "string",
+          "example": "1100000000000000",
+          "description": "Token id of the stored SEPA information."
+        },
+        "updated": {
+          "type": "string",
+          "example": "1100000000000000",
+          "description": "Date/time when the token metadata was last updated."
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "example": "/rest/v2/transactions?id=846512",
+          "description": "Link to the resource that was created/referenced"
+        },
+        "id": {
+          "type": "string",
+          "example": "846512",
+          "description": "Id of the resource referenced in the link. "
+        },
+        "rel": {
+          "type": "string",
+          "example": "transaction",
+          "description": "Type of object the link references.",
+          "enum": [
+            "transaction",
+            "token",
+            "customer",
+            "payment-plan",
+            "customer-token"
+          ]
+        }
+      }
+    },
+    "Merchant": {
+      "type": "object",
+      "properties": {
+        "merchantId": {
+          "type": "string"
+        },
+        "processingType": {
+          "type": "string"
+        },
+        "transactionsStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "MerchantResponse": {
+      "type": "object",
+      "properties": {
+        "merchants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Merchant"
+          }
+        }
+      }
+    },
+    "MerchantResponsePayload": {
+      "type": "object",
+      "properties": {
+        "merchantResponse": {
+          "$ref": "#/definitions/MerchantResponse"
+        },
+        "payloadType": {
+          "type": "string"
+        }
+      }
+    },
+    "Page": {
+      "type": "object",
+      "properties": {
+        "first": {
+          "type": "boolean",
+          "example": false,
+          "description": "first element"
+        },
+        "last": {
+          "type": "boolean",
+          "example": false,
+          "description": "last elementy"
+        },
+        "number": {
+          "type": "integer",
+          "format": "int32",
+          "example": 4,
+          "description": "page number"
+        },
+        "number-of-elements": {
+          "type": "integer",
+          "format": "int32",
+          "example": 102,
+          "description": "Number of elements in page"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32",
+          "example": 4,
+          "description": "total number of pages"
+        },
+        "sort": {
+          "$ref": "#/definitions/Sort"
+        },
+        "total-elements": {
+          "type": "integer",
+          "format": "int64",
+          "example": 102,
+          "description": "Number of elements in the full query"
+        },
+        "total-pages": {
+          "type": "integer",
+          "format": "int32",
+          "example": 4,
+          "description": "Number of pages in the full query"
+        }
+      }
+    },
+    "Response": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "200",
+          "description": "http status code",
+          "enum": [
+            "200",
+            "201",
+            "400",
+            "401",
+            "402",
+            "500",
+            "403"
+          ]
+        },
+        "emvUrl": {
+          "type": "string"
+        },
+        "exchange-id": {
+          "type": "string",
+          "example": "ID_38839393-3938383-484848484",
+          "description": "Unique Identifier used for troubleshooting, send to Clearent with error report"
+        },
+        "gatewayUrl": {
+          "type": "string"
+        },
+        "links": {
+          "type": "array",
+          "description": "List of links associated with operation",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "page": {
+          "description": "Page Object",
+          "$ref": "#/definitions/Page"
+        },
+        "payload": {
+          "$ref": "#/definitions/ResponsePayload"
+        },
+        "signature": {
+          "type": "string",
+          "description": "Base64Encoded image"
+        },
+        "status": {
+          "type": "string",
+          "example": "SUCCESS",
+          "description": "status of operation",
+          "enum": [
+            "SUCCESS",
+            "FAIL",
+            "ERROR"
+          ]
+        },
+        "urls": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "vaultUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "ResponsePayload": {
+      "type": "object",
+      "properties": {
+        "payloadType": {
+          "type": "string"
+        }
+      }
+    },
+    "SepaCreditTransactionRequest": {
+      "type": "object",
+      "required": [
+        "amount",
+        "execution-date",
+        "individual-name",
+        "invoice",
+        "token-id",
+        "type"
+      ],
+      "properties": {
+        "account-number": {
+          "type": "string",
+          "example": "123456789",
+          "description": "1 to 17 digits. Only available for credit transaction."
+        },
+        "account-type": {
+          "type": "string",
+          "example": "Checking",
+          "enum": [
+            "Checking",
+            "Savings. Necessarily in the case of the token not being present."
+          ]
+        },
+        "amount": {
+          "type": "string",
+          "example": "5.44",
+          "description": "An absolute number with two decimal places."
+        },
+        "description": {
+          "type": "string",
+          "example": "description",
+          "description": "A brief description of the product being sold"
+        },
+        "execution-date": {
+          "type": "string",
+          "example": "execution-date",
+          "description": "2021-10-29"
+        },
+        "external-transaction-reference": {
+          "type": "string",
+          "example": "external-transaction-reference",
+          "description": "The field contains the requester transaction reference information, should be unique for requester level"
+        },
+        "individual-name": {
+          "type": "string",
+          "example": "John Doe",
+          "description": "The name of the account holder. Only available for credit transaction."
+        },
+        "invoice": {
+          "type": "string",
+          "example": "invoiceSample1",
+          "description": "This helps with duplicate transaction checking. Only available for credit transaction."
+        },
+        "routing-number": {
+          "type": "string",
+          "example": "081009813",
+          "description": "9 digits."
+        },
+        "type": {
+          "type": "string",
+          "example": "Credit",
+          "enum": [
+            "Debit",
+            "Credit"
+          ]
+        },
+        "create-description": {
+          "type": "string",
+          "example": "token-description",
+          "description": "Pass in when creating a token if you would like to save a description with the token. Necessarily in the case of the token not being present."
+        },
+        "token-id": {
+          "type": "string",
+          "example": "1188888888888888",
+          "description": "Pass in if you would like to run the transaction with a previously created token. The token replaces routing-number, account-number, account-type and individual name; making those fields unnecessary when paying with a token"
+        }
+      }
+    },
+    "SepaDebitTransactionRequest": {
+      "type": "object",
+      "required": [
+        "amount",
+        "execution-date",
+        "type"
+      ],
+      "properties": {
+        "amount": {
+          "type": "string",
+          "example": "5.44",
+          "description": "An absolute number with two decimal places."
+        },
+        "description": {
+          "type": "string",
+          "example": "description",
+          "description": "A brief description of the product being sold"
+        },
+        "execution-date": {
+          "type": "string",
+          "example": "execution-date",
+          "description": "2021-10-29"
+        },
+        "external-transaction-reference": {
+          "type": "string",
+          "example": "external-transaction-reference",
+          "description": "The field contains the requester transaction reference information, should be unique for requester level"
+        },
+        "routing-number": {
+          "type": "string",
+          "example": "081009813",
+          "description": "9 digits."
+        },
+        "type": {
+          "type": "string",
+          "example": "Credit",
+          "enum": [
+            "Debit",
+            "Credit"
+          ]
+        },
+        "token-id": {
+          "type": "string",
+          "example": "1188888888888888",
+          "description": "Pass in if you would like to run the transaction with a previously created token. The token replaces routing-number, account-number, account-type and individual name; making those fields unnecessary when paying with a token"
+        }
+      }
+    },
+    "Sort": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sepa-transaction": {
+      "type": "object",
+      "required": [
+        "account-number",
+        "account-type",
+        "amount",
+        "type"
+      ],
+      "properties": {
+        "create-date": {
+          "type": "string",
+          "example": "create-date",
+          "description": "2021-10-29"
+        },
+        "execution-date": {
+          "type": "string",
+          "example": "execution-date",
+          "description": "2021-10-29"
+        },
+        "external-transaction-reference": {
+          "type": "string",
+          "example": "external-transaction-reference",
+          "description": "The field contains the requester transaction reference information, should be unique for requester level"
+        },
+        "iso-code": {
+          "type": "string",
+          "description": "Iso code"
+        },
+        "routing-number": {
+          "type": "string",
+          "example": "081009813",
+          "description": "9 digits. Only available for credit transaction."
+        },
+        "token-id": {
+          "type": "string",
+          "example": "token"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Debit",
+            "Credit"
+          ]
+        },
+        "amount": {
+          "type": "string",
+          "description": "An absolute number with two decimal places."
+        },
+        "account-number": {
+          "type": "string",
+          "description": "Account number masked to only show last four.  Only available for credit transaction."
+        },
+        "account-type": {
+          "type": "string",
+          "enum": [
+            "Checking",
+            "Savings"
+          ]
+        },
+        "individual-name": {
+          "type": "string",
+          "description": "The name of the account holder. Only available for credit transaction."
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique id of the sepa transaction."
+        },
+        "status": {
+          "type": "string",
+          "description": "Returned from GET and can be used with search filter.",
+          "enum": [
+            "Pending",
+            "Settling",
+            "Settled",
+            "Returned",
+            "Writing",
+            "Declined",
+            "Not_Confirmed",
+            "Sent",
+            "Rejected",
+            "Funded",
+            "Partially_Funded",
+            "Completed"
+          ]
+        },
+        "invoice": {
+          "type": "string",
+          "description": "This helps with duplicate transaction checking. Only available for credit transaction."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the product being sold"
+        },
+        "status-change-date": {
+          "type": "string",
+          "description": "Last date that the status of the transaction changed"
+        },
+        "display-message": {
+          "type": "string",
+          "description": "message to be displayed"
+        },
+        "sepa-token": {
+          "description": "Token returned with a create-token request for use in later transactions.",
+          "$ref": "#/definitions/SEPA Token Response"
+        },
+        "merchant-id": {
+          "type": "string",
+          "description": "Merchant Id of the transaction"
+        },
+        "terminal-id": {
+          "type": "string",
+          "description": "Terminal Id of the api-key used to create the transaction"
+        },
+        "software-type": {
+          "type": "string",
+          "example": "MySoftware_Version1.3",
+          "description": "Static field referencing the software name you are building"
+        }
+      },
+      "description": "This model represents the sepa transaction in the response"
+    }
+  }
+}
