@@ -2,6 +2,6 @@
 stoplight-id: lvzwgy771ugfw
 ---
 
-# Voyager
+# Xplor Pay
 
 The beginning of an awesome article...
