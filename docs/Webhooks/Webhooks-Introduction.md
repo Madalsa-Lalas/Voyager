@@ -2,7 +2,7 @@
 stoplight-id: 7jezflxyrmyo9
 ---
 
-# Webhooks-Introduction
+# Introduction
 
 
 ## Webhooks
