@@ -2,7 +2,7 @@
 stoplight-id: ucktmmw0snjc2
 ---
 
-#SEPA Mandate
+# SEPA Mandate
 
 **Getting Started with Mandates service**
 

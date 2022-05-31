@@ -2,7 +2,7 @@
 stoplight-id: w3pfzhclj6954
 ---
 
-#SEPA Transaction
+# SEPA Transaction
 
 
 
