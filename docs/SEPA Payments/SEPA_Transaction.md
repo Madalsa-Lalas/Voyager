@@ -2,9 +2,7 @@
 stoplight-id: w3pfzhclj6954
 ---
 
-# SEPA Payments API
-
-**SEPA Transaction**
+#SEPA Transaction
 
 
 
