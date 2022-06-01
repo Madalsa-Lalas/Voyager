@@ -1,2 +1,2 @@
-# Voyager
-This is a Voyager API repository
+# Xplor Pay
+This is a Xplor Pay API repository
