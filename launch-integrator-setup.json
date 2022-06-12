@@ -1,0 +1,2102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "LaunchIntegratorSetup.API"
+  },
+  "paths": {
+    "/api/launchIntegratorSetup/v1.0/authenticate/validatePIN/{merchantTokenId}": {
+      "post": {
+        "tags": [
+          "AuthenticationController"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantTokenId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PINRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v1.0/authenticate/sendResetPINRequest/{merchantTokenId}": {
+      "post": {
+        "tags": [
+          "AuthenticationController"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantTokenId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v1.0/authenticate/resetPIN/{merchantTokenId}": {
+      "post": {
+        "tags": [
+          "AuthenticationController"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantTokenId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ResetPINRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BadRequestResult"
+            }
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v1.0/authenticate/createPIN/{merchantTokenId}": {
+      "post": {
+        "tags": [
+          "AuthenticationController"
+        ],
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantTokenId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PINRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BadRequestResult"
+            }
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v1.0/authenticate/isFirstTimeUser/{merchantTokenId}": {
+      "get": {
+        "tags": [
+          "AuthenticationController"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantTokenId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/IsFirstTimeUserResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v1.0/authenticate/getEmail/{merchantTokenId}": {
+      "get": {
+        "tags": [
+          "AuthenticationController"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantTokenId",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetEmailResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v1.0/integrateMerchant/merchants/{merchantNumber}": {
+      "get": {
+        "tags": [
+          "Merchant"
+        ],
+        "summary": "Retrieves a merchant.",
+        "description": "Retrieves the merchant with the specified merchant number.\r\nSensitive data is obscured for security purposes.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantNumber",
+            "description": "Merchant number.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a single merchant successfully.",
+            "schema": {
+              "$ref": "#/definitions/IntegratorMerchant"
+            }
+          },
+          "400": {
+            "description": "If merchantNumber is null or white space."
+          },
+          "404": {
+            "description": "If merchant is not found."
+          },
+          "500": {
+            "description": "Error occurred returning merchant."
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v1.0/integrateMerchant/{hierarchyNodeKey}": {
+      "post": {
+        "tags": [
+          "Merchant"
+        ],
+        "summary": "Creates a new merchant.",
+        "description": "This endpoint can be called to create a new merchant with any data that you already have available.\r\nThe only required fields are the dbaName (the name that the merchant uses when doing business) and email address (so that the merchant can be sent a link) on the MerchantInformation object and the mccCode (Merchant Category Code) on the SalesProfile object",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hierarchyNodeKey",
+            "description": "The hierarchy node of the parent under which the new merchant should be created.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The IntegratorMerchant object which contains information about the new merchant.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IntegratorMerchant"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Merchant was successfully created and a link was successfully emailed to the merchant.",
+            "schema": {
+              "$ref": "#/definitions/MerchantResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request: Either an invalid JSON request or hierarchy node key.",
+            "schema": {
+              "$ref": "#/definitions/MerchantResponse"
+            }
+          },
+          "500": {
+            "description": "Error occurred retrieving data."
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v2.0/integrateMerchant/merchants/{merchantNumber}": {
+      "get": {
+        "tags": [
+          "Merchant"
+        ],
+        "summary": "Retrieves a merchant that exists in the Launch onboarding system along with their current data.",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantNumber",
+            "description": "Merchant number.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a single merchant successfully.",
+            "schema": {
+              "$ref": "#/definitions/IntegratorMerchantV2"
+            }
+          },
+          "404": {
+            "description": "If merchant is not found.",
+            "schema": {
+              "$ref": "#/definitions/IntegratorMerchantV2"
+            }
+          },
+          "400": {
+            "description": "If merchantNumber is null or white space."
+          },
+          "500": {
+            "description": "Error occurred returning merchant."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Merchant"
+        ],
+        "summary": "Update an existing merchant in the Launch onboarding system and generates a link at which a representative of the merchant can complete their setup.\r\nThe dbaName and emailAddresses fields on the MerchantInformation object are required",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "merchantNumber",
+            "description": "Merchant number.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The IntegratorMerchant object which contains information about the new merchant.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IntegratorMerchantV2"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Merchant was successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/MerchantResponseV2"
+            }
+          },
+          "400": {
+            "description": "Bad request: Either an invalid JSON request or merchant number.",
+            "schema": {
+              "$ref": "#/definitions/MerchantResponseV2"
+            }
+          },
+          "404": {
+            "description": "Not found: If the merchant number was not found.",
+            "schema": {
+              "$ref": "#/definitions/MerchantResponseV2"
+            }
+          },
+          "500": {
+            "description": "Error occurred retrieving data."
+          }
+        }
+      }
+    },
+    "/api/launchIntegratorSetup/v2.0/integrateMerchant/{hierarchyNodeKey}": {
+      "post": {
+        "tags": [
+          "Merchant"
+        ],
+        "summary": "Creates a merchant in the Launch onboarding system and generates a link at which a representative of the merchant can complete their setup.\r\nThe dbaName and emailAddresses fields on the MerchantInformation object are required",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hierarchyNodeKey",
+            "description": "The hierarchy node of the parent under which the new merchant should be created.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The IntegratorMerchant object which contains information about the new merchant.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IntegratorMerchantV2"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Merchant was successfully created and a link was successfully emailed to the merchant.",
+            "schema": {
+              "$ref": "#/definitions/MerchantResponseV2"
+            }
+          },
+          "400": {
+            "description": "Bad request: Either an invalid JSON request or hierarchy node key.",
+            "schema": {
+              "$ref": "#/definitions/MerchantResponseV2"
+            }
+          },
+          "500": {
+            "description": "Error occurred retrieving data."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AddressType": {
+      "enum": [
+        "Physical",
+        "Mailing",
+        "Contact",
+        "Billing"
+      ],
+      "type": "string"
+    },
+    "BadRequestResult": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "BankAccount": {
+      "description": "Information about a bank account associated with the business.",
+      "type": "object",
+      "properties": {
+        "bankName": {
+          "description": "The name of the bank associated with the routing number.",
+          "maxLength": 100,
+          "type": "string",
+          "example": "Wells Fargo"
+        },
+        "nameOnAccount": {
+          "description": "The name of the person or business that owns the account.\r\nEither this field or AccountHolderFirstName and AccountHolderLastName should be populated depending on the value set in the BankAccountNameTypeId field.",
+          "maxLength": 100,
+          "type": "string",
+          "example": "Food Sales LLC"
+        },
+        "accountHolderFirstName": {
+          "description": "The first name of the person who owns the account.\r\nAccountHolderLastName is required if this field is populated.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "Jane"
+        },
+        "accountHolderLastName": {
+          "description": "The last name of the person who ownes the account.\r\nAccountHolderFirstName is required if this field is populated.",
+          "maxLength": 40,
+          "type": "string",
+          "example": "Doe"
+        },
+        "bankAccountTypeId": {
+          "format": "int32",
+          "description": "Indicates whether the account is a Checkings, Savings, or General Ledger account.\r\nAllowed values are \"1\" for Checking, \"2\" for Savings, and \"3\" for General Ledger.",
+          "type": "integer",
+          "example": 1
+        },
+        "bankAccountNameTypeId": {
+          "format": "int32",
+          "description": "Indicates whether the name of the person or business who owns the account matches the Business Legal Name or the Business DBA Name.\r\nAllowed values are \"1\" for Business Legal Name, \"2\" for DBA Name, and \"3\" for Other.",
+          "type": "integer",
+          "example": 2
+        },
+        "aba": {
+          "description": "The routing number associated with the bank account.",
+          "maxLength": 9,
+          "type": "string",
+          "example": "091000019"
+        },
+        "accountNumber": {
+          "description": "The account number associated with the bank account.",
+          "type": "string",
+          "example": "77777888888888"
+        },
+        "hasFees": {
+          "description": "Indicates whether this bank account should be used to pay any fees charged to the merchant.",
+          "type": "boolean",
+          "example": true
+        },
+        "hasFunds": {
+          "description": "Indicates whether the bank account will be used when funding the merchant.",
+          "type": "boolean",
+          "example": true
+        },
+        "hasChargebacks": {
+          "description": "Indicates whether the bank account will be used to pay any transactions which are charged back to the merchant.",
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "BankAccountV2": {
+      "type": "object",
+      "properties": {
+        "bankAccountTypeId": {
+          "format": "int32",
+          "description": "Indicates whether the account is a Checking, Savings, or General Ledger account.\r\nAllowed values are \"1\" for Checking, \"2\" for Savings, and \"3\" for General Ledger.",
+          "type": "integer",
+          "example": 1
+        },
+        "accountNumber": {
+          "description": "The account number associated with the bank account.",
+          "maxLength": 34,
+          "type": "string",
+          "example": "77777888888888"
+        },
+        "currency": {
+          "description": "The account currency in ISO 4217 code",
+          "maxLength": 3,
+          "minLength": 3,
+          "type": "string",
+          "example": "USD"
+        }
+      }
+    },
+    "BusinessAddress": {
+      "required": [
+        "city",
+        "countryCode",
+        "line1",
+        "postalCode",
+        "stateOrRegion"
+      ],
+      "type": "object",
+      "properties": {
+        "line1": {
+          "description": "The first line of the address. Typically contains values such as street number, building number, and street name.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "1011 NORTHWEST AVE"
+        },
+        "line2": {
+          "description": "The second line of the address. Typically contains values such as apartment number, suite number, or building number.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "APT 223"
+        },
+        "line3": {
+          "description": "The third line of the address, if applicable.",
+          "maxLength": 80,
+          "type": "string",
+          "example": ""
+        },
+        "city": {
+          "description": "The city or town of the address.",
+          "maxLength": 40,
+          "type": "string",
+          "example": "ST LOUIS"
+        },
+        "stateOrRegion": {
+          "description": "The state for US or region for a non-us country.",
+          "maxLength": 255,
+          "type": "string",
+          "example": "CA"
+        },
+        "postalCode": {
+          "description": "Zip or postal code.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "65478"
+        },
+        "postTown": {
+          "description": "The state for US or region for a non-us country.\r\nThis is a required part of all postal addresses in the United Kingdom and Ireland, \r\nand a basic unit of the postal delivery system.",
+          "maxLength": 255,
+          "type": "string",
+          "example": "London"
+        },
+        "countryCode": {
+          "description": "The country code in the ISO 3166-1 alpha-2 format.\r\nA list of the allowed values can be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/CountryOptions",
+          "maxLength": 2,
+          "minLength": 2,
+          "type": "string",
+          "example": "FR"
+        },
+        "addressType": {
+          "$ref": "#/definitions/AddressType"
+        }
+      }
+    },
+    "BusinessContact": {
+      "description": "Information about an individual associated with the business.",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "The first name of the individual.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "Jane"
+        },
+        "lastName": {
+          "description": "The last name of the individual.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "Doe"
+        },
+        "ssn": {
+          "description": "The social security number of the individual.",
+          "maxLength": 9,
+          "type": "string",
+          "example": "Doe"
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "description": "The date of birth of the individual",
+          "type": "string",
+          "example": "Doe"
+        },
+        "countryOfCitizenshipCode": {
+          "format": "int32",
+          "description": "The country of citizenship of the individual.\r\nAllowed values are from the three letter country codes defined by ISO 3166-1.",
+          "type": "integer",
+          "example": 840
+        },
+        "line1": {
+          "description": "The first line of the individuals address. Typically contains values such as street number, building number, and street name.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "1011 NORTHWEST AVE"
+        },
+        "line2": {
+          "description": "The second line of the individuals address. Typically contains values such as apartment number, suite number, or building number.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "APT 223"
+        },
+        "line3": {
+          "description": "The third line of the individuals address, if applicable.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "Doe"
+        },
+        "city": {
+          "description": "The city or town of the individuals address.",
+          "maxLength": 40,
+          "type": "string",
+          "example": "ST LOUIS"
+        },
+        "stateCode": {
+          "description": "The state or region of the address. \r\nAllowed values are the suffixes of the values defined in ISO 3166-2.\r\nAs an example, the ISO_3166-2 code US-MO would be shortened to MO.\r\nA list of the allowed values can also be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/StateOptions",
+          "maxLength": 2,
+          "type": "string",
+          "example": "MO"
+        },
+        "zip": {
+          "description": "The zip or postal code of the individuals address.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "Doe"
+        },
+        "countryCode": {
+          "format": "int32",
+          "description": "The country containing the individuals address.\r\nAllowed values are from the three letter country codes defined by ISO 3166-1.\r\nA list of the allowed values can be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/CountryOptions",
+          "type": "integer",
+          "example": 840
+        },
+        "ownershipAmount": {
+          "format": "double",
+          "description": "The percentage of the business owned by the individual.",
+          "type": "number",
+          "example": 80
+        },
+        "emailAddress": {
+          "description": "The email address of the individual.",
+          "maxLength": 128,
+          "type": "string",
+          "example": "someone@clearent.com"
+        },
+        "title": {
+          "description": "The title of the individual with the business.\r\nAllowed values are from the three letter country codes defined by ISO 3166-1.",
+          "maxLength": 200,
+          "type": "string",
+          "example": "CFO"
+        },
+        "phoneNumbers": {
+          "description": "The list of phone numbers that can be used to contact this individual.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhoneNumber"
+          }
+        },
+        "contactTypes": {
+          "description": "A list of integers that correspond to contact types.\r\nThese indicate the relationship between the individual and the business.\r\nAllowed values are \"1\" to indicate that the individual can sign on behalf of the business, \"2\" to indicate that the individual owns some portion of the business, and \"3\" to indicate that the individual will act as a contact for the business.",
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "example": [
+            1,
+            2,
+            3
+          ]
+        },
+        "isCompassUser": {
+          "description": "Indicates that the individual should have an account created on the Compass Reporting Portal.",
+          "type": "boolean",
+          "example": true
+        },
+        "isAuthorizedToPurchase": {
+          "description": "Indicates that the individual can make financial decisions on behalf of the business.",
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "BusinessContactPhoneV3": {
+      "required": [
+        "areaCode",
+        "fullPhoneNumber",
+        "phoneNumber",
+        "phoneTypeCode"
+      ],
+      "type": "object",
+      "properties": {
+        "phoneTypeCode": {
+          "$ref": "#/definitions/PhoneTypeCodeRef"
+        },
+        "areaCode": {
+          "description": "The identifier for a geographic region",
+          "maxLength": 3,
+          "minLength": 3,
+          "type": "string",
+          "example": "555"
+        },
+        "phoneNumber": {
+          "description": "The phone number",
+          "maxLength": 8,
+          "minLength": 7,
+          "type": "string",
+          "example": "654-3210"
+        },
+        "extension": {
+          "description": "The number identifying a specific call path configuration \r\nthat allows you to dial and connect to another caller internally",
+          "type": "string",
+          "example": "8794"
+        },
+        "fullPhoneNumber": {
+          "description": "The full international phone number using E.164 format",
+          "maxLength": 15,
+          "minLength": 8,
+          "type": "string",
+          "example": "+14155552671"
+        }
+      }
+    },
+    "BusinessContactType": {
+      "enum": [
+        "Signer",
+        "Owner",
+        "GeneralContact"
+      ],
+      "type": "string"
+    },
+    "BusinessContactV3": {
+      "type": "object",
+      "properties": {
+        "contact": {
+          "$ref": "#/definitions/ContactV3"
+        },
+        "ownershipAmount": {
+          "format": "double",
+          "description": "The percentage of the business owned by the individual.",
+          "type": "number",
+          "example": 80
+        },
+        "emailAddress": {
+          "description": "The email address of the individual.",
+          "maxLength": 128,
+          "type": "string",
+          "example": "jane-doe@sandwiches.com"
+        },
+        "title": {
+          "description": "The title of the individual with the business.\r\nAllowed values are from the three letter country codes defined by ISO 3166-1.",
+          "maxLength": 200,
+          "type": "string",
+          "example": "CFO"
+        },
+        "phoneNumbers": {
+          "description": "The list of phone numbers that can be used to contact this individual.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BusinessContactPhoneV3"
+          }
+        },
+        "contactTypes": {
+          "description": "A list of integers that correspond to contact types.\r\nThese indicate the relationship between the individual and the business.\r\nAllowed values are \"Signer\" to indicate that the individual can sign on behalf of the business, \"Owner\" to indicate that the individual owns some portion of the business, and \"GeneralContact\" to indicate that the individual will act as a contact for the business.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BusinessContactType"
+          }
+        },
+        "isCompassUser": {
+          "description": "Indicates that the individual should have an account created on the Compass Reporting Portal.",
+          "type": "boolean",
+          "example": true
+        },
+        "isAuthorizedToPurchase": {
+          "description": "Indicates that the individual can make financial decisions on behalf of the business.",
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "BusinessEmailAddress": {
+      "type": "object",
+      "properties": {
+        "emailType": {
+          "$ref": "#/definitions/EmailType"
+        },
+        "emailAddress": {
+          "description": "The email address",
+          "type": "string",
+          "example": "jane-doe@sandwiches.com"
+        }
+      }
+    },
+    "BusinessPhone": {
+      "type": "object",
+      "properties": {
+        "phoneTypeId": {
+          "format": "int32",
+          "description": "Used to indicate what a phone number is used for.\r\nAllowed values are \"1\" for Cell Phone, \"2\" for Fax, and \"3\" for Home, \"4\" for Other, and \"5\" for Work.\r\nA list of the allowed values can also be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/PhoneTypes",
+          "type": "integer",
+          "example": 3
+        },
+        "areaCode": {
+          "description": "The 3-digit area code of the phone number.",
+          "maxLength": 3,
+          "type": "string",
+          "example": "313"
+        },
+        "phoneNumber": {
+          "description": "The 7-digit telephone number.",
+          "maxLength": 7,
+          "type": "string",
+          "example": "3334444"
+        },
+        "extension": {
+          "description": "The extension of the phone number, if needed.",
+          "maxLength": 8,
+          "type": "string",
+          "example": "ext. 5"
+        }
+      }
+    },
+    "BusinessPhoneV3": {
+      "required": [
+        "fullPhoneNumber",
+        "phoneTypeCode"
+      ],
+      "type": "object",
+      "properties": {
+        "phoneTypeCode": {
+          "$ref": "#/definitions/PhoneTypeCodeRef"
+        },
+        "areaCode": {
+          "description": "The identifier for a geographic region",
+          "maxLength": 3,
+          "minLength": 3,
+          "type": "string",
+          "example": "555"
+        },
+        "phoneNumber": {
+          "description": "The phone number",
+          "maxLength": 8,
+          "minLength": 7,
+          "type": "string",
+          "example": "654-3210"
+        },
+        "extension": {
+          "description": "The number identifying a specific call path configuration \r\nthat allows you to dial and connect to another caller internally",
+          "type": "string",
+          "example": "8794"
+        },
+        "fullPhoneNumber": {
+          "description": "The full international phone number using E.164 format",
+          "maxLength": 15,
+          "minLength": 8,
+          "type": "string",
+          "example": "+14155552671"
+        }
+      }
+    },
+    "ContactAddressV3": {
+      "required": [
+        "city",
+        "countryCode",
+        "line1",
+        "postalCode",
+        "stateOrRegion"
+      ],
+      "type": "object",
+      "properties": {
+        "line1": {
+          "description": "The first line of the address. Typically contains values such as street number, building number, and street name.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "1011 NORTHWEST AVE"
+        },
+        "line2": {
+          "description": "The second line of the address. Typically contains values such as apartment number, suite number, or building number.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "APT 223"
+        },
+        "line3": {
+          "description": "The third line of the address, if applicable.",
+          "maxLength": 80,
+          "type": "string",
+          "example": ""
+        },
+        "city": {
+          "description": "The city or town of the address.",
+          "maxLength": 40,
+          "type": "string",
+          "example": "ST LOUIS"
+        },
+        "postalCode": {
+          "description": "Zip or postal code.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "65478"
+        },
+        "stateOrRegion": {
+          "description": "The state for US or region for a non-us country.",
+          "maxLength": 255,
+          "type": "string",
+          "example": "CA"
+        },
+        "countryCode": {
+          "description": "The country code in the ISO 3166-1 alpha-2 format.\r\nA list of the allowed values can be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/CountryOptions",
+          "maxLength": 2,
+          "minLength": 2,
+          "type": "string",
+          "example": "FR"
+        }
+      }
+    },
+    "ContactV3": {
+      "required": [
+        "countryOfCitizenshipCode"
+      ],
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "The first name of the individual.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "Jane"
+        },
+        "lastName": {
+          "description": "The last name of the individual.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "Doe"
+        },
+        "legalID": {
+          "description": "The ID number of the individual.",
+          "maxLength": 9,
+          "type": "string",
+          "example": "999889999"
+        },
+        "legalIDType": {
+          "$ref": "#/definitions/TINType"
+        },
+        "dateOfBirth": {
+          "format": "date-time",
+          "description": "The date of birth of the individual",
+          "type": "string",
+          "example": "1/12/1989"
+        },
+        "countryOfCitizenshipCode": {
+          "description": "The country code in the ISO 3166-1 alpha-2 format.\r\nA list of the allowed values can be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/CountryOptions",
+          "maxLength": 2,
+          "minLength": 2,
+          "type": "string",
+          "example": "FR"
+        },
+        "address": {
+          "$ref": "#/definitions/ContactAddressV3"
+        }
+      }
+    },
+    "EmailType": {
+      "enum": [
+        "Mailing",
+        "Billing"
+      ],
+      "type": "string"
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "type": "string"
+        },
+        "errorResults": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ErrorResult"
+          }
+        }
+      }
+    },
+    "ErrorResult": {
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "type": "string"
+        },
+        "resultCode": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "fieldPath": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timeStamp": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "GetEmailResponse": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "IntegratorMerchant": {
+      "type": "object",
+      "properties": {
+        "merchantInformation": {
+          "$ref": "#/definitions/MerchantInformation"
+        },
+        "mailingAddress": {
+          "$ref": "#/definitions/MailingAddress"
+        },
+        "physicalAddress": {
+          "$ref": "#/definitions/PhysicalAddress"
+        },
+        "bankAccounts": {
+          "description": "Information about the bank accounts used by the merchant.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankAccount"
+          }
+        },
+        "businessContacts": {
+          "description": "Information about contacts and owners of the merchant.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BusinessContact"
+          }
+        },
+        "salesProfile": {
+          "$ref": "#/definitions/SalesProfile"
+        },
+        "taxpayer": {
+          "$ref": "#/definitions/Taxpayer"
+        },
+        "externalCustomerId": {
+          "description": "An identifier for the new merchant in your system.\r\nAlongside the merchant number, this identifier will be returned on any web hooks that are sent to your system.",
+          "type": "string",
+          "example": "id28829382999"
+        },
+        "pricingPlan": {
+          "$ref": "#/definitions/PricingPlan"
+        }
+      }
+    },
+    "IntegratorMerchantV2": {
+      "type": "object",
+      "properties": {
+        "parentHnk": {
+          "type": "string"
+        },
+        "merchantInformation": {
+          "$ref": "#/definitions/MerchantInformationV2"
+        },
+        "billingAddress": {
+          "$ref": "#/definitions/BusinessAddress"
+        },
+        "mailingAddress": {
+          "$ref": "#/definitions/BusinessAddress"
+        },
+        "physicalAddress": {
+          "$ref": "#/definitions/BusinessAddress"
+        },
+        "bankAccount": {
+          "$ref": "#/definitions/BankAccountV2"
+        },
+        "domesticUsBankAccounts": {
+          "description": "Information about the bank accounts used by the merchant.(US merchants)",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankAccount"
+          }
+        },
+        "businessContacts": {
+          "description": "Information about contacts and owners of the merchant.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BusinessContactV3"
+          }
+        },
+        "taxpayer": {
+          "$ref": "#/definitions/TaxpayerV3"
+        },
+        "externalCustomerId": {
+          "description": "An identifier for the new merchant in your system.\r\nAlongside the merchant number, this identifier will be returned on any web hooks that are sent to your system.",
+          "type": "string",
+          "example": "id28829382999"
+        },
+        "pricingPlan": {
+          "$ref": "#/definitions/PricingPlan"
+        },
+        "percentBatchRejectionsNotCharged": {
+          "format": "double",
+          "description": "Waive the rejection fee if the number of rejected transactions is less the a certain % of total transaction in a batch.",
+          "type": "number",
+          "example": 2
+        },
+        "settlementSchedule": {
+          "$ref": "#/definitions/ScheduleSettlement"
+        },
+        "applicationURL": {
+          "format": "uri",
+          "description": "The URL for merchant to follow on for the KYC process",
+          "type": "string"
+        }
+      }
+    },
+    "IsFirstTimeUserResponse": {
+      "type": "object",
+      "properties": {
+        "isFirstTimeUser": {
+          "type": "boolean"
+        }
+      }
+    },
+    "LegalIdentifier": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "The value of the identifier",
+          "type": "string",
+          "example": "99998888777788"
+        },
+        "type": {
+          "$ref": "#/definitions/TINType"
+        }
+      }
+    },
+    "MailingAddress": {
+      "type": "object",
+      "properties": {
+        "line1": {
+          "description": "The first line of the address. Typically contains values such as street number, building number, and street name.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "1011 NORTHWEST AVE"
+        },
+        "line2": {
+          "description": "The second line of the address. Typically contains values such as apartment number, suite number, or building number.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "APT 223"
+        },
+        "line3": {
+          "description": "The third line of the address, if applicable.",
+          "maxLength": 80,
+          "type": "string",
+          "example": ""
+        },
+        "city": {
+          "description": "The city or town of the address.",
+          "maxLength": 40,
+          "type": "string",
+          "example": "ST LOUIS"
+        },
+        "stateCode": {
+          "description": "The state or region of the address. \r\nAllowed values are the suffixes of the values defined in ISO 3166-2.\r\nAs an example, the ISO_3166-2 code US-MO would be shortened to MO.\r\nA list of the allowed values can also be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/StateOptions",
+          "maxLength": 2,
+          "type": "string",
+          "example": "MO"
+        },
+        "zip": {
+          "description": "Zip or postal code.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "Doe"
+        },
+        "countryCode": {
+          "format": "int32",
+          "description": "The country containing the address.\r\nAllowed values are from the three letter country codes defined by ISO 3166-1.\r\nA list of the allowed values can be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/CountryOptions",
+          "type": "integer",
+          "example": 840
+        }
+      }
+    },
+    "MerchantInformation": {
+      "required": [
+        "dbaName",
+        "emailAddress"
+      ],
+      "type": "object",
+      "properties": {
+        "dbaName": {
+          "description": "The publicly facing name of the business.",
+          "maxLength": 100,
+          "type": "string",
+          "example": "Jane's Sandwich Shop"
+        },
+        "merchantNumber": {
+          "description": "The number that identifies the merchant within the Clearent system.\r\nThis number will be generated and returned as part of the response.",
+          "maxLength": 16,
+          "type": "string",
+          "example": "6588000099990000"
+        },
+        "emailAddress": {
+          "description": "The email address of the business.\r\n(This email address will also be used to email the merchant the link at which they can complete their setup.)",
+          "maxLength": 128,
+          "type": "string",
+          "example": "janedoe@clearent.com"
+        },
+        "website": {
+          "description": "The web site of the business.",
+          "maxLength": 1024,
+          "type": "string",
+          "example": "www.jane-doe0sandwiches.com"
+        },
+        "phones": {
+          "description": "An array containing phone numbers at which the business can be reached.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BusinessPhone"
+          }
+        },
+        "acceptsPaperStatements": {
+          "description": "Indicates that the merchant should be mailed paper copies of financial statements in addtion to receiving them online.\r\nThese will be delivered to the address provided on the mailing address endpoint.",
+          "type": "boolean",
+          "example": true
+        },
+        "acceptsPaperTaxForms": {
+          "description": "Indicates that the merchant should be mailed paper copies of tax documents rather in addition to receiving them online.\r\nThese will be delivered to the address provided on the mailing address endpoint.",
+          "type": "boolean",
+          "example": true
+        },
+        "companyTypeId": {
+          "format": "int32",
+          "description": "Indicates the business structure of the merchant.\r\nAllowed values are \"1\" for Sole Proprietorships, \"2\" for Partnerships, \"3\" for LLCs, \"8\" for Non Profits or Tax Exempt business, \"9\" for Government organizations, \"10\" for Corporations, or \"11\" for Assocations, Estates, or Trusts.\r\nA list of the allowed values can be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/CompanyTypes",
+          "type": "integer",
+          "example": 8
+        },
+        "seasonalSchedule": {
+          "$ref": "#/definitions/SeasonalSchedule"
+        },
+        "salesInformation": {
+          "$ref": "#/definitions/SalesInformation"
+        }
+      }
+    },
+    "MerchantInformationV2": {
+      "required": [
+        "companyTypeId",
+        "dbaName",
+        "emailAddresses",
+        "nameOnStatement"
+      ],
+      "type": "object",
+      "properties": {
+        "hierarchyNodeKey": {
+          "type": "string"
+        },
+        "dbaName": {
+          "description": "The publicly facing name of the business.",
+          "maxLength": 100,
+          "type": "string",
+          "example": "Jane's Sandwich Shop"
+        },
+        "merchantNumber": {
+          "description": "The number that identifies the merchant within the Clearent system.\r\nThis number will be generated and returned as part of the response.",
+          "maxLength": 16,
+          "type": "string",
+          "example": "6588000099990000"
+        },
+        "website": {
+          "description": "The web site of the business.",
+          "maxLength": 1024,
+          "type": "string",
+          "example": "www.jane-doe-sandwiches.com"
+        },
+        "acceptsPaperStatements": {
+          "description": "Indicates that the merchant should be mailed paper copies of financial statements in addition to receiving them online.\r\nThese will be delivered to the address provided on the mailing address endpoint.",
+          "type": "boolean",
+          "example": true
+        },
+        "acceptsPaperTaxForms": {
+          "description": "Indicates that the merchant should be mailed paper copies of tax documents rather in addition to receiving them online.\r\nThese will be delivered to the address provided on the mailing address endpoint.",
+          "type": "boolean",
+          "example": true
+        },
+        "companyTypeId": {
+          "format": "int32",
+          "description": "Indicates the business structure of the merchant.\r\nA list of the allowed values can be retrieved programatically by making a GET request to the endpoint /api/demographics/v2.0/References/CompanyTypes?countryCode=FR",
+          "maximum": 2147483647,
+          "minimum": 1,
+          "type": "integer",
+          "example": 8
+        },
+        "merchantCategoryCode": {
+          "description": "A four-digit number listed in ISO 18245 for retail financial services. \r\nAn MCC is used to classify a business by the types of goods or services it provides.",
+          "maximum": 2147483647,
+          "minimum": 1,
+          "maxLength": 4,
+          "minLength": 4,
+          "type": "string",
+          "example": "5544"
+        },
+        "nameOnStatement": {
+          "description": "The public name which appears on the bank statement.",
+          "maxLength": 24,
+          "type": "string",
+          "example": "Xplor Jane Shop"
+        },
+        "emailAddresses": {
+          "description": "The list of email address of the business.\r\n(This email address marked as Mailing will also be used to email the merchant the link at which they can complete their setup.)",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BusinessEmailAddress"
+          }
+        },
+        "phones": {
+          "description": "The list of phones of the business.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BusinessPhoneV3"
+          }
+        },
+        "seasonalSchedule": {
+          "$ref": "#/definitions/SeasonalSchedule"
+        }
+      }
+    },
+    "MerchantResponse": {
+      "type": "object",
+      "properties": {
+        "merchant": {
+          "$ref": "#/definitions/IntegratorMerchant"
+        },
+        "applicationURL": {
+          "format": "uri",
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ErrorResponse"
+          }
+        }
+      }
+    },
+    "MerchantResponseV2": {
+      "type": "object",
+      "properties": {
+        "merchant": {
+          "$ref": "#/definitions/IntegratorMerchantV2"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ErrorResult"
+          }
+        }
+      }
+    },
+    "PhoneNumber": {
+      "type": "object",
+      "properties": {
+        "phoneTypeId": {
+          "format": "int32",
+          "description": "Used to indicate what a phone number is used for.\r\nAllowed values are \"1\" for Cell Phone, \"2\" for Fax, and \"3\" for Home, \"4\" for Other, and \"5\" for Work.\r\nA list of the allowed values can also be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/PhoneTypes",
+          "type": "integer",
+          "example": 3
+        },
+        "areaCode": {
+          "description": "The 3-digit area code of the phone number.",
+          "maxLength": 3,
+          "type": "string",
+          "example": "313"
+        },
+        "number": {
+          "description": "The 7-digit telephone number.",
+          "maxLength": 7,
+          "type": "string",
+          "example": "3334444"
+        },
+        "extension": {
+          "description": "The extension of the phone number, if needed.",
+          "maxLength": 8,
+          "type": "string",
+          "example": "ext. 5"
+        }
+      }
+    },
+    "PhoneTypeCodeRef": {
+      "enum": [
+        "Cell",
+        "Fax",
+        "Home",
+        "Other",
+        "Work"
+      ],
+      "type": "string"
+    },
+    "PhysicalAddress": {
+      "type": "object",
+      "properties": {
+        "line1": {
+          "description": "The first line of the address. Typically contains values such as street number, building number, and street name.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "1011 NORTHWEST AVE"
+        },
+        "line2": {
+          "description": "The second line of the address. Typically contains values such as apartment number, suite number, or building number.",
+          "maxLength": 80,
+          "type": "string",
+          "example": "APT 223"
+        },
+        "line3": {
+          "description": "The third line of the address, if applicable.",
+          "maxLength": 80,
+          "type": "string",
+          "example": ""
+        },
+        "city": {
+          "description": "The city or town of the address.",
+          "maxLength": 40,
+          "type": "string",
+          "example": "ST LOUIS"
+        },
+        "stateCode": {
+          "description": "The state or region of the address. \r\nAllowed values are the suffixes of the values defined in ISO 3166-2.\r\nAs an example, the ISO_3166-2 code US-MO would be shortened to MO.\r\nA list of the allowed values can also be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/StateOptions",
+          "maxLength": 2,
+          "type": "string",
+          "example": "MO"
+        },
+        "zip": {
+          "description": "Zip or postal code.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "Doe"
+        },
+        "countryCode": {
+          "format": "int32",
+          "description": "The country containing the address.\r\nAllowed values are from the three letter country codes defined by ISO 3166-1.\r\nA list of the allowed values can be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/CountryOptions",
+          "type": "integer",
+          "example": 840
+        }
+      }
+    },
+    "PINRequest": {
+      "type": "object",
+      "properties": {
+        "piN4digits": {
+          "type": "string"
+        }
+      }
+    },
+    "PricingPlan": {
+      "type": "object",
+      "properties": {
+        "pricingFees": {
+          "description": "The set of pricing fees which will be applied to this merchant.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingPlanFee"
+          }
+        },
+        "pricingPlanID": {
+          "format": "int32",
+          "description": "The identifier for this pricing plan.",
+          "type": "integer"
+        },
+        "pricingPlanTemplateID": {
+          "format": "int32",
+          "description": "The id of the pricing template that should be used to validate this pricing plan.\r\nThese are assigned at the partner level and will be provided by your integration specialist.",
+          "type": "integer"
+        },
+        "pricingTypeCode": {
+          "description": "This value will be provided by your integration specialist.",
+          "type": "string"
+        },
+        "isAdvancedPricing": {
+          "description": "This value will be provided by your integration specialist.",
+          "type": "boolean"
+        },
+        "isEMF": {
+          "description": "Enrolls the merchant in Clearent's EMF (Express Merchant Funding) program, giving them next-business-day funding of batches submitted prior to 11:00 p.m. Eastern Time.",
+          "type": "boolean"
+        },
+        "isDailySettle": {
+          "description": "Governs the settlement of transaction fees: If IsDailySettle is set to true, fees will be deducted from the merchant's daily deposit. If IsDailySettle is set to false, fees will be deducted from the merchant's bank account at the end of the month (Note: a Month End Billing Option fee may apply to transactions that have fees settled monthly).",
+          "type": "boolean"
+        },
+        "includeAssessments": {
+          "description": "\"Governs the billing of certain card brand fees including but not limited to: Assessments, Foreign Card Fees, Authorization Fees (e.g. NABU, APF), Visa Fees (TIF, FANF, ZFL, Auth Misuse), and Network Fees.\r\nAs a general guideline:\r\nThis should be set to false if the merchant is on a flat-rate or two-tier pricing plan, as the Discount Rate(or Card-Present/Card-Not-Present Transaction Fees) are set high enough to cover these items.\r\nThis should be set to true if the merchant is on a Tiered pricing plan, as the Discount Rate is set to cover Interchange, but not these other fees.\r\nThis should not be available in the template for IC Plus pricing plans, as it must be set to \"\"Y\"\" and not left to the client's discretion.\"",
+          "type": "boolean"
+        }
+      }
+    },
+    "PricingPlanFee": {
+      "type": "object",
+      "properties": {
+        "clearentPricingFeeID": {
+          "format": "int32",
+          "description": "The identifier for this pricing fee.",
+          "type": "integer"
+        },
+        "pricingFeeDescription": {
+          "description": "A description of the pricing fee.\r\nNot required when creating or updating pricing fee.",
+          "type": "string"
+        },
+        "rate": {
+          "format": "double",
+          "description": "Used to indicate a percentage of the transaction amount that will be applied as a fee on each transaction of this type.",
+          "type": "number"
+        },
+        "fee": {
+          "format": "double",
+          "description": "Used to indicate an amount that will be applied as a fee on each transaction of this type.\r\nFor non-transactional fees, this fees may be applied on a monthly, semi-annual, or annual basis.",
+          "type": "number"
+        },
+        "payInMonth1": {
+          "format": "int32",
+          "description": "Used to indicate the month in which annual fees should be billed or the first month in which a semi-annual fee should be billed.\r\nOtherwise, this field should be set to null.",
+          "type": "integer"
+        },
+        "payInMonth2": {
+          "format": "int32",
+          "description": "Used to indicate the second month in which a semi-annual fees should be billed.\r\nOtherwise, this field should be set to null.",
+          "type": "integer"
+        }
+      }
+    },
+    "ResetPINRequest": {
+      "type": "object",
+      "properties": {
+        "resetToken": {
+          "format": "uuid",
+          "type": "string"
+        }
+      }
+    },
+    "SalesInformation": {
+      "description": "Used by internal teams to track sales information.\r\nShould be set to null.",
+      "type": "object",
+      "properties": {
+        "assignedUser": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "referralPartner": {
+          "type": "string"
+        },
+        "compensationType": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "SalesProfile": {
+      "required": [
+        "mccCode"
+      ],
+      "type": "object",
+      "properties": {
+        "mccCode": {
+          "description": "The Merchant Category Code or MCC Code of the merchant. The MCC Code is a 4-digit number used to classify merchants and businesses by the type of goods or services provided.",
+          "maxLength": 4,
+          "type": "string",
+          "example": "5812"
+        },
+        "cardPresentPercentage": {
+          "format": "double",
+          "description": "The percentage of the merchants transactions which are classified as card present.",
+          "type": "number",
+          "example": 50
+        },
+        "motoKeyedPercentage": {
+          "format": "double",
+          "description": "The percentage of the merchants transactions where the payment information is provided by Mail Order or Telephone Order (MOTO)\r\nIncludes transactions where payment information is provided to the merchant by either mail, email, or phone.\r\nFor merchants where the CardPresentPercentage is 100, this value is assumed to be 0.\r\nOtherwise, the sum of the MotoKeyedPercentage and ECommercePercentage must be 100.",
+          "type": "number",
+          "example": 50
+        },
+        "eCommercePercentage": {
+          "format": "double",
+          "description": "The percentage of the merchants transactions where the payment information is provided over the internet.\r\nFor merchants where the CardPresentPercentage is 100, this value is assumed to be 0.\r\nOtherwise, the sum of the MotoKeyedPercentage and ECommercePercentage must be 100.",
+          "type": "number",
+          "example": 50
+        },
+        "returnRefundPolicy": {
+          "description": "Indicates the merchants policy around returns and refunds.",
+          "maxLength": 512,
+          "type": "string",
+          "example": "Refunds are available within 90 days."
+        },
+        "productsSold": {
+          "description": "A description of the products sold by the merchant.",
+          "maxLength": 256,
+          "type": "string",
+          "example": "Food and beverages."
+        },
+        "previouslyAcceptedPaymentCards": {
+          "description": "Indicates whether the merchant previously accepted card payments.",
+          "type": "boolean",
+          "example": true
+        },
+        "previouslyTerminatedOrIdentifiedByRiskMonitoring": {
+          "description": "<br></br>\r\n            Indicates whether the merchant has previously been terminated by another processor or identified by their risk monitoring solutions.",
+          "type": "boolean",
+          "example": true
+        },
+        "reasonPreviouslyTerminatedOrIdentifiedByRisk": {
+          "description": "<br></br>\r\n            Used to provide additional information about merchants who were previously terminated by another processor or identified by their risk monitoring solution.\r\n            Required when PreviouslyTerminatedOrIdentifiedByRiskMonitoring is set to true.",
+          "maxLength": 512,
+          "type": "string",
+          "example": "Stolen identity"
+        },
+        "currentlyOpenForBusiness": {
+          "description": "Indicates whether the merchant is currently open for business.",
+          "type": "boolean",
+          "example": true
+        },
+        "annualVolume": {
+          "format": "double",
+          "description": "The annual gross volume of sales done by the merchant.\r\nIf the merchant has been open for less than 12 months, the projected annual gross volume of sales.",
+          "type": "number",
+          "example": 550000
+        },
+        "averageTicket": {
+          "format": "double",
+          "description": "The average volume of a transaction for the merchant.",
+          "type": "number",
+          "example": 50.12
+        },
+        "highTicket": {
+          "format": "double",
+          "description": "The high volume of a transaction for the merchant.",
+          "type": "number",
+          "example": 575
+        },
+        "ownsProduct": {
+          "description": "Indicates whether a merchant owns the products that they sell.",
+          "type": "boolean",
+          "example": true
+        },
+        "ordersProduct": {
+          "description": "Indicates whether a merchant orders the products that they sell.",
+          "type": "boolean",
+          "example": false
+        },
+        "sellsFirearms": {
+          "description": "Indicates whether a merchant sells firearms.",
+          "type": "boolean",
+          "example": false
+        },
+        "sellsFirearmAccessories": {
+          "description": "Indicates whether a merchant sells firearms.",
+          "type": "boolean",
+          "example": false
+        },
+        "futureDeliveryTypeId": {
+          "format": "int32",
+          "description": "For merchants who deliver products after the time of purchase, this field indicates the typical range in which products are delivered. Required if the FutureDeliveryPercentage is greater than 0.\r\nAllowed values are \"1\" to indicate that products are delivered within 1-7 days, \"2\" to indicate that products are between 7-14 days, and \"3\" to indicate that they are delivered at a later time.\r\nA list of the allowed values can also be retrieved programatically by making a GET request to the endpoint /api/demographics/v1.0/References/FutureDeliveryTypes",
+          "type": "integer",
+          "example": false
+        },
+        "otherDeliveryType": {
+          "description": "Used to provide additional information when products are delivered.\r\nRequired when FutureDeliveryTypeId is \"3\".",
+          "type": "string",
+          "example": "Stolen identity"
+        },
+        "futureDeliveryPercentage": {
+          "format": "double",
+          "description": "The percentage of products which are delivered after the time of purchase.",
+          "type": "number",
+          "example": 75
+        },
+        "fireArmsLicense": {
+          "description": "The Federal Firearms License (FFL) number assigned to a merchant by the U.S. Bureau of Alcohol, Tobacco, Firearms and Explosives.\r\nA 15 digit number containing 14 numbers and 1 letter.\r\nRequired when a SellsFirearms is true.\r\nCan be left null, otherwise.",
+          "maxLength": 15,
+          "type": "string",
+          "example": "199888776Y5555"
+        },
+        "cardBrands": {
+          "description": "Indicates the set of card brands that are accepted by the partner.\r\nAllowed values are \"1\" for American Express through the OptBlue Program, \"2\" for Debit, \"3\" for Discover, \"4\" for MasterCard, \"5\" for Visa, \"6\" for EBT, and \"7\" for American Express through the ESA Program.",
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "example": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "ebtNumber": {
+          "description": "The Electronics Benefit Transfer (EBT) number assigned to a merchant by the U.S. Department of Agriculture.\r\nTypically a 7 digit number. Required when CardBrands includes the value \"6\" indicating that the merchant accepts EBT.\r\nCan be left null, otherwise.",
+          "maxLength": 20,
+          "type": "string",
+          "example": "1999991"
+        },
+        "amexMID": {
+          "description": "The AmexMID is the number assigned to participants in American Expresses ESA program.\r\nRequired when CardBrands includes the value \"7\" indicating that the merchant accepts American Express through the ESA Program.\r\nCan be left null, otherwise.",
+          "maxLength": 9,
+          "type": "string",
+          "example": "1999991"
+        },
+        "sellsCBD": {
+          "description": "Indicates whether the merchant sells CBD or CBD based products.",
+          "type": "boolean",
+          "example": true
+        },
+        "cbdSalesTypeID": {
+          "format": "int32",
+          "description": "Used to indicate whether the merchant participates in the Clearent CBD Program.",
+          "type": "integer"
+        },
+        "salesProfileCBD": {
+          "$ref": "#/definitions/SalesProfileCBD"
+        }
+      }
+    },
+    "SalesProfileCBD": {
+      "type": "object",
+      "properties": {
+        "annualCBDRevenuePercentage": {
+          "format": "double",
+          "description": "The percentage of the merchant's annual revenue that results from sales of products containing CBD.",
+          "type": "number",
+          "example": 35
+        },
+        "cbdProductInventoryPercentage": {
+          "format": "double",
+          "description": "The percentage of the products in the merchants inventory which contains CBD.",
+          "type": "number",
+          "example": 75
+        },
+        "cbdCategoryID": {
+          "format": "int32",
+          "description": "The CBD Category designator for the acquiring bank.\r\nThis value does not need to be provided and will be calculated on the backend.",
+          "type": "integer"
+        },
+        "incorporatedDate": {
+          "format": "date-time",
+          "description": "The date of incorporation of the merchant.\r\nDates can be provided in the format yyyy-mm-ddThh:mm:ss or yyyy-mm-dd, however hours minutes and seconds will be omitted.",
+          "type": "string",
+          "example": "2020-11-30T00:00:00"
+        }
+      }
+    },
+    "ScheduledWeekday": {
+      "enum": [
+        "Any",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "type": "string"
+    },
+    "ScheduleInterval": {
+      "enum": [
+        "None",
+        "Daily",
+        "Weekly",
+        "ThreeDay",
+        "Fortnight",
+        "Monthly",
+        "Immediate",
+        "Quarterly"
+      ],
+      "type": "string"
+    },
+    "ScheduleSettlement": {
+      "type": "object",
+      "properties": {
+        "settlementScheduleID": {
+          "format": "int32",
+          "description": "The identifier for this settlement schedule\r\nNot required when creating the schedule",
+          "type": "integer"
+        },
+        "scheduleInterval": {
+          "$ref": "#/definitions/ScheduleInterval"
+        },
+        "scheduledWeekday": {
+          "$ref": "#/definitions/ScheduledWeekday"
+        }
+      }
+    },
+    "SeasonalSchedule": {
+      "description": "Used to indicate that whether the merchant is seasonal and the months that they are active.\r\nIf this value is set to null, it will be assumed that the merchant is open in all months.",
+      "type": "object",
+      "properties": {
+        "april": {
+          "description": "Used to indicate whether the merchant is open in April.",
+          "type": "boolean",
+          "example": true
+        },
+        "august": {
+          "description": "Used to indicate whether the merchant is open in August.",
+          "type": "boolean",
+          "example": true
+        },
+        "december": {
+          "description": "Used to indicate whether the merchant is open in December.",
+          "type": "boolean",
+          "example": true
+        },
+        "february": {
+          "description": "Used to indicate whether the merchant is open in February.",
+          "type": "boolean",
+          "example": true
+        },
+        "january": {
+          "description": "Used to indicate whether the merchant is open in January.",
+          "type": "boolean",
+          "example": true
+        },
+        "july": {
+          "description": "Used to indicate whether the merchant is open in July.",
+          "type": "boolean",
+          "example": true
+        },
+        "june": {
+          "description": "Used to indicate whether the merchant is open in June.",
+          "type": "boolean",
+          "example": true
+        },
+        "march": {
+          "description": "Used to indicate whether the merchant is open in March.",
+          "type": "boolean",
+          "example": true
+        },
+        "may": {
+          "description": "Used to indicate whether the merchant is open in May.",
+          "type": "boolean",
+          "example": true
+        },
+        "november": {
+          "description": "Used to indicate whether the merchant is open in November.",
+          "type": "boolean",
+          "example": true
+        },
+        "october": {
+          "description": "Used to indicate whether the merchant is open in October.",
+          "type": "boolean",
+          "example": true
+        },
+        "september": {
+          "description": "Used to indicate whether the merchant is open in September.",
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "Taxpayer": {
+      "type": "object",
+      "properties": {
+        "tin": {
+          "description": "Taxpayer Identification Number (TIN) or Employer Identification Number (EIN) assigned by the IRS.\r\nFor Sole Proprietors and Single Owner LLCs the SSN of the owner can be used instead.",
+          "maxLength": 9,
+          "type": "string",
+          "example": "999889999"
+        },
+        "tinTypeId": {
+          "format": "int32",
+          "description": "Used to indicate the type of value added in the TIN field.\r\nAllowed values are \"1\" for TIN, \"2\" for SSN.",
+          "type": "integer",
+          "example": 1
+        },
+        "businessLegalName": {
+          "description": "The official name of the business.\r\nThis would be the same name used when registering the business with legal entities.",
+          "maxLength": 100,
+          "type": "string",
+          "example": "Some Business LLC"
+        },
+        "stateIncorporatedCode": {
+          "description": "The StateIncorporatedCode refers to the state or region in which where the company was registered.\r\nAllowed values are the suffixes of the values defined in ISO 3166-2.\r\nAs an example, the ISO_3166-2 code US-MO would be shortened to MO.",
+          "maxLength": 2,
+          "type": "string",
+          "example": "MO"
+        }
+      }
+    },
+    "TaxpayerV3": {
+      "type": "object",
+      "properties": {
+        "businessLegalName": {
+          "description": "The official name of the business.\r\nThis would be the same name used when registering the business with legal entities.",
+          "maxLength": 100,
+          "type": "string",
+          "example": "Jane's Sandwich Shop"
+        },
+        "legalFirstName": {
+          "description": "The first name of the sole properity",
+          "type": "string",
+          "example": "Jane"
+        },
+        "legalLastName": {
+          "description": "The last name of the sole properity",
+          "type": "string",
+          "example": "Doe"
+        },
+        "dateOfIncorporation": {
+          "format": "date-time",
+          "description": "The date of incorporation for this business",
+          "type": "string"
+        },
+        "stateOrRegion": {
+          "description": "The state or region for the business",
+          "type": "string",
+          "example": "CA"
+        },
+        "legalIdentifiers": {
+          "description": "The list of legal identifiers for this business",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LegalIdentifier"
+          }
+        }
+      }
+    },
+    "TINType": {
+      "enum": [
+        "TIN",
+        "SSN",
+        "Unknown",
+        "IDTVA",
+        "SIRET",
+        "IDRNA"
+      ],
+      "type": "string"
+    }
+  }
+}
