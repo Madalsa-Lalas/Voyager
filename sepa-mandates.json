@@ -413,13 +413,7 @@
     },
     "mandate-request": {
       "type": "object",
-      "required": [
-        "bic",
-        "customer-full-name",
-        "date-signed",
-        "iban",
-        "unique-mandate-reference"
-      ],
+      "description": "Use this model when posting a new mandate request",
       "properties": {
         "unique-mandate-reference": {
           "type": "string",
@@ -458,7 +452,14 @@
           "description": "Country code of the debtor"
         }
       },
-      "description": "Use this model when posting a new mandate request"
+      "required": [
+        "unique-mandate-reference",
+        "iban",
+        "bic",
+        "date-signed",
+        "customer-full-name",
+        "address"
+      ]
     }
   }
 }
