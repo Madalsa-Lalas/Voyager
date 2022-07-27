@@ -25357,6 +25357,42 @@
           }
         },
         "example": null
+      },
+      "200GetSurchargeConfigurations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "paymentTypeDescription": {
+              "type": "string"
+            },
+            "paymentType": {
+              "type": "string"
+            },
+            "maxSurchargePercentage": {
+              "type": "number"
+            },
+            "maxSurchargeAmount": {
+              "type": "integer"
+            }
+          }
+        },
+        "x-examples": {
+          "example-1": [
+            {
+              "paymentTypeDescription": "CreditCard",
+              "paymentType": "CC",
+              "maxSurchargePercentage": 2.95,
+              "maxSurchargeAmount": 10
+            },
+            {
+              "paymentTypeDescription": "CreditCardOther",
+              "paymentType": "CO",
+              "maxSurchargePercentage": 3.95,
+              "maxSurchargeAmount": 100
+            }
+          ]
+        }
       }
     },
     "securitySchemes": {
