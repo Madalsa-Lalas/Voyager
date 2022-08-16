@@ -2560,42 +2560,14 @@
                     }
                   }
                 },
-                "example": {
-                  "businessAccountId": "DSFit1",
-                  "name": "Northshore - Debitsuccess 24/7 Fitness",
-                  "active": true,
-                  "penaltyFee": {
-                    "amount": 10,
-                    "payer": "Facility"
-                  },
-                  "establishmentFee": {
-                    "amount": 10,
-                    "percent": 50,
-                    "payer": "Customer"
-                  },
-                  "commissionFee": {
-                    "paymentType": "Casual Credit Card Payments",
-                    "commissionPercentage": 0,
-                    "commissionTransactionCharge": 5,
-                    "commissionChargeType": "Percentage",
-                    "minimumnimumTransactionCharge": 0,
-                    "retainCommissionOnReversedTransaction": false,
-                    "commissionPayerType": "Customer"
-                  },
-                  "supportedPaymentMethods": [
-                    {
-                      "paymentMethodType": "MasterCard"
-                    },
-                    {
-                      "paymentMethodType": "Visa"
-                    },
-                    {
-                      "paymentMethodType": "BankAccount"
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "paymentTypeDescription": "string",
+                      "paymentType": "string",
+                      "maxSurchargePercentage": 0,
+                      "maxSurchargeAmount": 0
                     }
-                  ],
-                  "business": {
-                    "businessId": "3333333",
-                    "name": "24/7 fitness"
                   }
                 }
               }
