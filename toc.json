@@ -1,0 +1,61 @@
+{
+  "collapseTableOfContents": false,
+  "items": [
+    {
+      "type": "divider",
+      "title": "Introduction"
+    },
+    {
+      "type": "item",
+      "title": "Xplor Pay",
+      "uri": "/docs/Introduction/Voyager.md"
+    },
+    {
+      "type": "divider",
+      "title": "SEPA Payments"
+    },
+    {
+      "type": "item",
+      "title": "SEPA Transaction",
+      "uri": "/docs/SEPA Payments/SEPA_Transaction.md"
+    },
+    {
+      "type": "item",
+      "title": "SEPA Mandate",
+      "uri": "/docs/SEPA Payments/SEPA-Mandates.md"
+    },
+    {
+      "type": "divider",
+      "title": "Webhooks"
+    },
+    {
+      "type": "item",
+      "title": "Introduction",
+      "uri": "/docs/Webhooks/Webhooks-Introduction.md"
+    },
+    {
+      "type": "divider",
+      "title": "APIS"
+    },
+    {
+      "type": "item",
+      "title": "Sepa Transactions",
+      "uri": "/sepa-transactions.json"
+    },
+    {
+      "type": "item",
+      "title": "Mandates endpoints",
+      "uri": "/sepa-mandates.json"
+    },
+    {
+      "type": "item",
+      "title": "LaunchIntegratorSetup.API",
+      "uri": "/launch-integrator-setup.json"
+    },
+    {
+      "type": "item",
+      "title": "Customer Services API",
+      "uri": "/CustomerServicesApi.v1 (4).json"
+    }
+  ]
+}
