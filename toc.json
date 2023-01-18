@@ -54,6 +54,11 @@
     },
     {
       "type": "item",
+      "title": "BACS API",
+      "uri": "/Bacs_Mandate_Api_20230118.json"
+    },
+    {
+      "type": "item",
       "title": "Customer Services API",
       "uri": "/CustomerServicesApi.v1 (4).json"
     }
