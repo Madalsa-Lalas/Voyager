@@ -1,0 +1,524 @@
+{
+  "swagger": "2.0",
+  "x-stoplight": {
+    "id": "jh8by6qus8iy0"
+  },
+  "info": {
+    "title": "Bacs.Mandates.API"
+  },
+  "paths": {
+    "/api/bacs-mandates/v1.0/mandate": {
+      "post": {
+        "tags": [
+          "Mandate"
+        ],
+        "summary": "Create the Mandate according to request value from body",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input data for creating the Mandate",
+            "schema": {
+              "$ref": "#/definitions/MandateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mandate saved with success.",
+            "schema": {
+              "$ref": "#/definitions/Mandate"
+            },
+            "examples": {
+              "application/json": {
+                "mandate": {
+                  "mandateId": 0,
+                  "customerSortCode": "123",
+                  "customerAccountNumber": "1",
+                  "customerAccountName": "John Smith",
+                  "mandateReference": "00000000-0000-0000-0000-000000000000",
+                  "merchantId": "6588000012309225",
+                  "accountToken": null,
+                  "signedDateTimeUTC": "2022-01-01T00:00:00",
+                  "mandateStatus": 1,
+                  "mandateStatusId": 0,
+                  "createdDateTimeUTC": "0001-01-01T00:00:00",
+                  "createdBy": null,
+                  "updateDateTimeUTC": "0001-01-01T00:00:00",
+                  "modifiedBy": null,
+                  "mandateIsActive": false
+                },
+                "metadata": {
+                  "exchangeId": "ID-8ec17101-5db8-4e82-bed9-3f6cc2e0518a",
+                  "timestamp": "2023-01-18T05:05:34.0857559Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "examples": {
+              "application/json": {
+                "errorResults": [
+                  {
+                    "errorMessage": "Invalid Mandate",
+                    "resultCode": 400
+                  }
+                ],
+                "metadata": {
+                  "exchangeId": "ID-fdfd302e-2b7f-4c6b-8b2e-901584758275",
+                  "timestamp": "2023-01-18T05:05:34.0864664Z"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Errors."
+          }
+        }
+      }
+    },
+    "/api/bacs-mandates/v1.0/mandate/{mandateReference}/internalState": {
+      "get": {
+        "tags": [
+          "Mandate"
+        ],
+        "summary": "Get Mandatate internal state info according to request value from route",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mandateReference",
+            "description": "Input data for getting Mandate Status info",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mandate Status received with success.",
+            "schema": {
+              "$ref": "#/definitions/GetMandateInternalStateResponse"
+            },
+            "examples": {
+              "application/json": {
+                "getMandateInternalStateResponse": {
+                  "mandateReference": "9999998888",
+                  "mandateIsActive": true,
+                  "accountToken": "ab1daf92-c253-4234-a042-f01a9196cdef"
+                },
+                "metadata": {
+                  "exchangeId": "ID-86ead1ca-b991-4257-850b-382ff84390b9",
+                  "timestamp": "2023-01-18T05:05:34.0889476Z"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Mandate not found."
+          }
+        }
+      }
+    },
+    "/api/bacs-mandates/v1.0/mandate/{uniqueMandateReference}": {
+      "get": {
+        "tags": [
+          "Mandate"
+        ],
+        "summary": "Get the Mandate according to request value from route",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uniqueMandateReference",
+            "description": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Mandate"
+            },
+            "examples": {
+              "application/json": {
+                "mandate": {
+                  "mandateId": 0,
+                  "customerSortCode": "123",
+                  "customerAccountNumber": "1",
+                  "customerAccountName": "John Smith",
+                  "mandateReference": "00000000-0000-0000-0000-000000000000",
+                  "merchantId": "6588000012309225",
+                  "accountToken": null,
+                  "signedDateTimeUTC": "2022-01-01T00:00:00",
+                  "mandateStatus": 1,
+                  "mandateStatusId": 0,
+                  "createdDateTimeUTC": "0001-01-01T00:00:00",
+                  "createdBy": null,
+                  "updateDateTimeUTC": "0001-01-01T00:00:00",
+                  "modifiedBy": null,
+                  "mandateIsActive": false
+                },
+                "metadata": {
+                  "exchangeId": "ID-fef4f278-d1a9-419d-9f29-049378b4a4eb",
+                  "timestamp": "2023-01-18T05:05:34.0900221Z"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Mandate"
+        ],
+        "summary": "Change Status of the Mandate in deleted",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uniqueMandateReference",
+            "description": "ref of the Mandate that needs to be deleted",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mandate was deleted with success."
+          },
+          "204": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorisez"
+          },
+          "404": {
+            "description": "Mandate not found."
+          }
+        }
+      }
+    },
+    "/api/bacs-mandates/v1.0/mandate/{mandateReference}": {
+      "put": {
+        "tags": [
+          "Mandate"
+        ],
+        "summary": "Update the values inside the account token of a mandate, according to request value from body.",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mandateReference",
+            "description": "Unique mandate reference",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "exchangeId",
+            "description": "Correlation Id for the request",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Input data for creating the Mandate",
+            "schema": {
+              "$ref": "#/definitions/MandatePutRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mandate put with success.",
+            "schema": {
+              "$ref": "#/definitions/Mandate"
+            },
+            "examples": {
+              "application/json": {
+                "mandate": {
+                  "mandateId": 0,
+                  "customerSortCode": "123",
+                  "customerAccountNumber": "1",
+                  "customerAccountName": "John Smith",
+                  "mandateReference": "00000000-0000-0000-0000-000000000000",
+                  "merchantId": "6588000012309225",
+                  "accountToken": null,
+                  "signedDateTimeUTC": "2022-01-01T00:00:00",
+                  "mandateStatus": 1,
+                  "mandateStatusId": 0,
+                  "createdDateTimeUTC": "0001-01-01T00:00:00",
+                  "createdBy": null,
+                  "updateDateTimeUTC": "0001-01-01T00:00:00",
+                  "modifiedBy": null,
+                  "mandateIsActive": false
+                },
+                "metadata": {
+                  "exchangeId": "ID-d3800ca9-e09b-4d3c-a13d-389b759e658b",
+                  "timestamp": "2023-01-18T05:05:34.0929671Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "examples": {
+              "application/json": {
+                "errorResults": [
+                  {
+                    "errorMessage": "Invalid Mandate",
+                    "resultCode": 400
+                  }
+                ],
+                "metadata": {
+                  "exchangeId": "ID-817fc25e-4a08-4618-98ce-5dbfa266e1d0",
+                  "timestamp": "2023-01-18T05:05:34.0931229Z"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Mandate not found."
+          },
+          "500": {
+            "description": "Internal Errors."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "description": "Represents the standardized response from the API in case of an error caused by user input.",
+      "type": "object",
+      "properties": {
+        "errorResults": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ErrorResult"
+          }
+        }
+      }
+    },
+    "ErrorResult": {
+      "description": "Single item of an error as part of an Bacs.Mandates.API.Models.ErrorResponse.",
+      "type": "object",
+      "properties": {
+        "errorMessage": {
+          "description": "Error message field",
+          "type": "string"
+        },
+        "resultCode": {
+          "format": "int32",
+          "description": "Result code field",
+          "type": "integer"
+        }
+      }
+    },
+    "GetMandateInternalStateResponse": {
+      "description": "Information related to the Status of a Mandate",
+      "type": "object",
+      "properties": {
+        "mandateReference": {
+          "description": "Unique identifier of the Mandate",
+          "type": "string"
+        },
+        "mandateIsActive": {
+          "description": "Check if the Mandate is active",
+          "type": "boolean"
+        },
+        "accountToken": {
+          "description": "Token generated by the TokenX endpoint containing sensible data",
+          "type": "string"
+        }
+      }
+    },
+    "Mandate": {
+      "description": "Class containing all the information regarding a Mandate",
+      "type": "object",
+      "properties": {
+        "mandateId": {
+          "format": "int32",
+          "description": "unique field from the database, represents record id from database",
+          "type": "integer"
+        },
+        "customerSortCode": {
+          "description": "Sort code is a six digits code, which is used by British and Irish banks",
+          "type": "string"
+        },
+        "customerAccountNumber": {
+          "description": "Account number of the customer",
+          "type": "string"
+        },
+        "customerAccountName": {
+          "description": "Account name of the customer",
+          "type": "string"
+        },
+        "mandateReference": {
+          "description": "Unique identifier of the Mandate",
+          "type": "string"
+        },
+        "merchantId": {
+          "description": "Merchant id",
+          "type": "string"
+        },
+        "accountToken": {
+          "description": "Token generated by the TokenX endpoint containing sensible data",
+          "type": "string"
+        },
+        "signedDateTimeUTC": {
+          "format": "date-time",
+          "description": "Date from which this mandate is effective",
+          "type": "string"
+        },
+        "mandateStatus": {
+          "$ref": "#/definitions/MandateStatus"
+        },
+        "mandateStatusId": {
+          "format": "int32",
+          "description": "Mandate Status id",
+          "type": "integer"
+        },
+        "createdDateTimeUTC": {
+          "format": "date-time",
+          "description": "DateTime when the Mandate was created",
+          "type": "string"
+        },
+        "createdBy": {
+          "description": "Entity that request the creation of the Mandate",
+          "type": "string"
+        },
+        "updateDateTimeUTC": {
+          "format": "date-time",
+          "description": "DateTime when the Mandate was modfied",
+          "type": "string"
+        },
+        "modifiedBy": {
+          "description": "Entity that request the status change of the Mandate",
+          "type": "string"
+        },
+        "mandateIsActive": {
+          "description": "Check if the Mandate is active",
+          "type": "boolean"
+        }
+      }
+    },
+    "MandatePutRequest": {
+      "description": "Request body format for Mandate Put Request",
+      "type": "object",
+      "properties": {
+        "customerSortCode": {
+          "description": "Sort code is a six digits code, which is used by British and Irish banks",
+          "type": "string"
+        },
+        "customerAccountNumber": {
+          "description": "Account number of the customer",
+          "type": "string"
+        },
+        "customerAccountName": {
+          "description": "Account name of the customer",
+          "type": "string"
+        }
+      }
+    },
+    "MandateRequest": {
+      "description": "Request body format for Mandate",
+      "type": "object",
+      "properties": {
+        "customerSortCode": {
+          "description": "Sort code is a six digits code, which is used by British and Irish banks",
+          "type": "string"
+        },
+        "customerAccountNumber": {
+          "description": "Account number of the customer",
+          "type": "string"
+        },
+        "customerAccountName": {
+          "description": "Account name of the customer",
+          "type": "string"
+        },
+        "mandateReference": {
+          "description": "Unique identifier of the Mandate",
+          "type": "string"
+        },
+        "signedDateTimeUTC": {
+          "format": "date-time",
+          "description": "Date from which this mandate is effective",
+          "type": "string"
+        }
+      }
+    },
+    "MandateStatus": {
+      "format": "int32",
+      "description": "Possible values for Mandate status\r\nWhen adding a new Status, make sure to keep in sync with the id from database.",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "type": "integer"
+    }
+  }
+}
